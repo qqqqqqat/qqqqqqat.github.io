@@ -17,19 +17,29 @@ jobs:
           node-version: '18'
           
       - name: Install dependencies
-        run: npm install
-        
+        run: |
+          cd ./mywebapp
+          npm install
+          
       - name: Install Prettier
-        run: npm install --save-dev --save-exact prettier
+        run: |
+          cd ./mywebapp
+          npm install --save-dev --save-exact prettier
         
       - name: Format code with Prettier
-        run: npx prettier . --write
+        run: |
+          cd ./mywebapp
+          npx prettier . --write
         
       - name: Build the project
-        run: npm run build  # เพิ่มขั้นตอนการ build ที่นี่ถ้าจำเป็น
+        run: |
+          cd ./mywebapp
+          npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./  # หรือ ./ ถ้าคุณต้องการใช้ root directory
+          publish_dir: ./mywebapp/dist
+          publish_branch: gh-pages
+
