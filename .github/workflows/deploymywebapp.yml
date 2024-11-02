@@ -23,7 +23,7 @@ jobs:
         run: npx prettier . --write
         
       - name: Build the project
-        run: npm run dev # เพิ่มขั้นตอนการ build ที่นี่ถ้าจำเป็น
+        run: npm run build # เพิ่มขั้นตอนการ build ที่นี่ถ้าจำเป็น
 
 
       - name: Deploy to GitHub Pages
