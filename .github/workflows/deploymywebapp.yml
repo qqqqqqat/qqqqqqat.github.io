@@ -36,4 +36,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./dist  # หรือ ./ ถ้าคุณต้องการใช้ root directory
+          publish_dir: ./mywebapp/dist  # หรือ ./ ถ้าคุณต้องการใช้ root directory
