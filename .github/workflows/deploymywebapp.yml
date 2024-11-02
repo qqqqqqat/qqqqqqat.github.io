@@ -22,11 +22,10 @@ jobs:
       - name: Format code with Prettier
         run: npx prettier . --write
         
-      - name: Change directory
-        run: cd ./mywebapp
-        
       - name: Build the project
-        run: npm run build # เพิ่มขั้นตอนการ build ที่นี่ถ้าจำเป็น
+        run: |
+          cd ./mywebapp
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
