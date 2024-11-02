@@ -13,14 +13,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          publish_dir: ./mywebapp
       - name: Install dependencies
         run: npm install
       - name: Install Prettier
         run: npm install --save-dev --save-exact prettier
-        
-      - name: Check code formatting with Prettier
-        run: npx prettier --check "**/*.{html,css,js}"  # ตรวจสอบฟอร์แมตโค้ด HTML, CSS และ JS
       - name: Format code with Prettier
         run: npx prettier . --write  # จัดฟอร์แมตโค้ดทั้งหมด
  
