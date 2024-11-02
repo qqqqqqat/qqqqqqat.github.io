@@ -10,8 +10,7 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
-        with:
-          publish_dir: ./mywebapp # หรือ ./ ถ้าคุณต้องการใช้ root directory
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -22,6 +21,9 @@ jobs:
         
       - name: Format code with Prettier
         run: npx prettier . --write
+        
+      - name: Change directory
+        run: cd ./mywebapp
         
       - name: Build the project
         run: npm run build # เพิ่มขั้นตอนการ build ที่นี่ถ้าจำเป็น
