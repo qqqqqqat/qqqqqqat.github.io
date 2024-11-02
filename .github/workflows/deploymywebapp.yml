@@ -19,13 +19,17 @@ jobs:
       - name: Install dependencies
         run: |
           cd ./mywebapp
-          npm install  # ใช้ run เพื่อรันคำสั่ง npm install
-         
+          npm install
+          
       - name: Install Prettier
-        run: npm install --save-dev --save-exact prettier
+        run: |
+          cd ./mywebapp
+          npm install --save-dev --save-exact prettier
         
       - name: Format code with Prettier
-        run: npx prettier . --write
+        run: |
+          cd ./mywebapp
+          npx prettier . --write
         
       - name: Build the project
         run: |
@@ -36,4 +40,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./mywebapp/dist  # หรือ ./ ถ้าคุณต้องการใช้ root directory
+          publish_dir: ./mywebapp/dist
