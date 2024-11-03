@@ -8,8 +8,8 @@ jobs:
   format-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # ให้สิทธิ์เขียน ID Token
-      contents: read    # ให้สิทธิ์อ่านและเขียน Contents
+      id-token: write  
+      contents: read 
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./mywebapp/dist
+          publish_dir: ./dist
           publish_branch: gh-pages
 
 
