@@ -35,11 +35,12 @@ jobs:
         run: |
           cd ./mywebapp
           npm run build
-
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./mywebapp/dist
+          publish_dir: ./mywebapp/build
           publish_branch: gh-pages
+
 
