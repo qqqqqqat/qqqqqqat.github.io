@@ -7,40 +7,33 @@ on:
 jobs:
   format-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # ให้สิทธิ์เขียน ID Token
+      contents: read    # ให้สิทธิ์อ่านและเขียน Contents
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
-        
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: |
           cd ./mywebapp
           npm install
-          
-      - name: Install Prettier
-        run: |
-          cd ./mywebapp
-          npm install --save-dev --save-exact prettier
-        
-      - name: Format code with Prettier
-        run: |
-          cd ./mywebapp
-          npx prettier . --write
-        
+
       - name: Build the project
         run: |
           cd ./mywebapp
           npm run build
-      
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          publish_dir: ./mywebapp
+          publish_dir: ./mywebapp/dist
           publish_branch: gh-pages
 
 
