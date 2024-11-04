@@ -22,7 +22,7 @@ jobs:
         run: |
           cd ./mywebapp
           npm install
-
+          
       - name: Build the project
         run: |
           cd ./mywebapp
@@ -30,6 +30,18 @@ jobs:
           
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
+        with:
+          name: production-files
+          path: ./mywebapp/dist
+          
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
           name: production-files
           path: ./mywebapp/dist
