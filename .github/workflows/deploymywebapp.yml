@@ -5,7 +5,8 @@ on:
       - main
 
 jobs:
-  format-and-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +27,12 @@ jobs:
         run: |
           cd ./mywebapp
           npm run build
+          
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./mywebapp/dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
